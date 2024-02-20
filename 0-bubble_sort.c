@@ -30,6 +30,9 @@ void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
 
+	if (size <= 2)
+		return;
+
 	if (array != NULL)
 	{
 		for (i = 0; i < size - 1; i++)

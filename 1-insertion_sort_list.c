@@ -1,58 +1,66 @@
 #include "sort.h"
-#include <stdio.h>
 
 void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
 {
-	listint_t *temp = NULL;
-
-	if (node1 == *head)
+	/*If node1 is the head, update the head to node2*/
+	if (node1->prev == NULL)
 		*head = node2;
 
-	temp = node1->prev;
-	printf("%p\n", (void *)temp);
-	if (temp != NULL)
-		temp->next = node2;
+	/*Update the previous node's next pointer to node2*/
+	if (node1->prev != NULL)
+		node1->prev->next = node2;
+
+	/*Update node2's previous pointer to node1's previous*/
+	node2->prev = node1->prev;
+	/*Update node1's next pointer to node2's next*/
 	node1->next = node2->next;
-	node2->next = node1;
-	node2->prev = temp;
+	/*Update node1's previous pointer to node2*/
 	node1->prev = node2;
+	/*If node2 has a next node, update the next node's*/
+	/* previous pointer to node1*/
+	if (node2->next != NULL)
+		node2->next->prev = node1;
+	/*Update node2's next pointer to node1*/
+	node2->next = node1;
+}
+
+size_t list_len(listint_t *head)
+{
+	listint_t *temp;
+	size_t lenght = 0;
+
+	temp = head;
+	while (temp != NULL)
+	{
+		lenght++;
+		temp = temp->next;
+	}
+	return (lenght);
 }
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *node = NULL, *next_node = NULL;
-	listint_t *swapped_node = NULL, *prev_node = NULL;
+	listint_t *node = NULL, *prev_node = NULL, *next_node = NULL;
 
-	if (*list != NULL)
+	/*If the list is empty or has only one element, no sorting needed*/
+	if (!list || !(*list) || !(*list)->next)
+		return;
+	if (list_len(*list) <= 2)
+		return;
+
+	node = (*list)->next;
+	while (node != NULL)
 	{
-		node = *list;
-		while (node->next != NULL)
+		prev_node = node->prev;
+		next_node = node->next;
+		/*Iterate backwards to find the correct position for the current node*/
+		while (prev_node != NULL && node->n < prev_node->n)
 		{
-			next_node = node->next;
-			if (node->n > next_node->n)
-			{
-				swap_node(list, node, next_node);
-				print_list(*list);
-				node = node->prev;
-				swapped_node = node->prev;
-				while (swapped_node != NULL &&
-						swapped_node->prev != NULL)
-				{
-					prev_node = swapped_node->prev;
-					if (swapped_node->n < prev_node->n)
-					{
-						swap_node(list, prev_node, swapped_node);
-						print_list(*list);
-						printf("INNER LOOP -> %d\n", node->n);
-					}
-					else
-					{
-						break;
-					}
-				}
-			}
-			printf("OUTER LOOP -> %d\n", node->n);
-			node = node->next;
+			swap_node(list, prev_node, node);
+			print_list(*list);
+			/*Update prev_node to continue checking for correct position*/
+			prev_node = node->prev;
 		}
+		node = next_node;
 	}
 }
