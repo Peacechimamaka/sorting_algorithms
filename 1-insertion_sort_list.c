@@ -5,6 +5,7 @@
  *@head: pointer to tue first node
  *@node1: a node
  *@node2: a second node
+ *Return: returns nothing
  */
 
 void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
@@ -31,6 +32,13 @@ void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
 	node2->next = node1;
 }
 
+/**
+ *@insertion_sort_list - a function that uses the insertiin sorting techniques
+ *
+ *@list: the list
+ *
+ * Return: returns nothing
+ */
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *node = NULL, *prev_node = NULL, *next_node = NULL;
