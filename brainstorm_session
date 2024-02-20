@@ -1,0 +1,12 @@
+Task 1
+
+Insertion Sorting Algorithm
+
+How it works:
+
+- Divide array into sorted and unsorted part
+- When sorting begins, the sorted part is the first number
+- Compare the first number after the sorted part (n) to the last number in the sorted part (s)
+- If s is greater than n:
+	~ Compare n to every value in the sorted part (stop comparing if we find a value less than n)
+	~ Add to the sorted part
