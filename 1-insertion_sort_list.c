@@ -1,5 +1,12 @@
 #include "sort.h"
 
+/**
+ *swap_node - a function that swaps node
+ *@head: pointer to tue first node
+ *@node1: a node
+ *@node2: a second node
+ */
+
 void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
 {
 	/*If node1 is the head, update the head to node2*/
