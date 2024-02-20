@@ -24,28 +24,12 @@ void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
 	node2->next = node1;
 }
 
-size_t list_len(listint_t *head)
-{
-	listint_t *temp;
-	size_t lenght = 0;
-
-	temp = head;
-	while (temp != NULL)
-	{
-		lenght++;
-		temp = temp->next;
-	}
-	return (lenght);
-}
-
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *node = NULL, *prev_node = NULL, *next_node = NULL;
 
 	/*If the list is empty or has only one element, no sorting needed*/
 	if (!list || !(*list) || !(*list)->next)
-		return;
-	if (list_len(*list) <= 2)
 		return;
 
 	node = (*list)->next;
