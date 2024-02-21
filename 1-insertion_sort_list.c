@@ -1,11 +1,11 @@
 #include "sort.h"
 
 /**
- *swap_node - a function that swaps node
- *@head: pointer to tue first node
- *@node1: a node
- *@node2: a second node
- *Return: returns nothing
+ * swap_node - a function that swaps node
+ * @head: pointer to tue first node
+ * @node1: a node
+ * @node2: a second node
+ * Return: returns nothing
  */
 
 void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
@@ -33,9 +33,9 @@ void swap_node(listint_t **head, listint_t *node1, listint_t *node2)
 }
 
 /**
- *@insertion_sort_list - a function that uses the insertiin sorting techniques
+ * insertion_sort_list - a function that uses the insertiin sorting techniques
  *
- *@list: the list
+ * @list: the list
  *
  * Return: returns nothing
  */
