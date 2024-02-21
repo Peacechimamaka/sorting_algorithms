@@ -34,16 +34,16 @@ void selection_sort(int *array, size_t size)
 	if (array == NULL || size < 2)
 		return;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-		least = array;
-		for (j = i + 1; j < size - 1; j++)
+		least = array + i;
+		for (j = i + 1; j < size; j++)
 		{
 			if (array[j] < *least)
 				least = array + j;
 			least = least;
 		}
-		if ((array + j) != least)
+		if ((array + i) != least)
 		{
 			swap(array + j, least);
 			print_array(array, size);
