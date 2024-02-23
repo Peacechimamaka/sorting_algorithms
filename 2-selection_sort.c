@@ -21,7 +21,7 @@ void swap(int *i, int *j)
  *selection_sort - sorts an element using the selection sort techniques
  *
  *@array: the array to be sorted
- *@size: size of the arrau
+ *@size: size of the array
  *
  * Return: nothing
  */
@@ -45,7 +45,7 @@ void selection_sort(int *array, size_t size)
 		}
 		if ((array + i) != least)
 		{
-			swap(array + j, least);
+			swap(array + i, least);
 			print_array(array, size);
 		}
 	}
